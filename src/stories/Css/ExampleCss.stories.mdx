@@ -1,0 +1,119 @@
+<!--- Introduction.stories.stories.mdx -->
+
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+
+<Meta title="Examples css/Component css code" />
+
+# Document
+
+<br />
+
+<p style={{ fontSize: 18 }}>
+  In this section we explain how to use this package to customize your component
+  ui. <br />
+  We prefer to use modular css code, beacuse developer see all css code to edit code
+  and reduce package size for particular component!
+</p>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+## Css code List
+
+- [**CircleToggle**](#circletoggle)
+- [**Group**](#group)
+- [**Resposive**](#resposive)
+
+<br />
+<br />
+<br />
+
+## CircleToggle
+
+```
+.circle-toggle {
+  width: 70px;
+  height: 35px;
+  justify-content: space-between;
+  border-radius: 30px;
+}
+.circle-toggle .sweep-button-item {
+  border-radius: 100%;
+  font-size: 12px;
+  min-height: 30px !important;
+  min-width: 30px !important;
+  max-width: 30px !important;
+  max-height: 30px !important;
+}
+.root-toggle-on {
+  transition: 0.4s;
+  background-color: #96de7f;
+}
+.root-toggle-off {
+  transition: 0.4s;
+  background-color: #7760c8;
+}
+.item-toggle-on {
+  background-color: #33701f !important;
+}
+.item-toggle-off {
+  background-color: #20173d !important;
+}
+
+```
+
+<br />
+<br />
+<br />
+
+## Group
+
+```
+.group-multi-switch {
+  width: 253px;
+  flex-wrap: wrap;
+  background: #f9b0a7;
+}
+.group-multi-switch .sweep-button-item {
+  background: #f8e5ba;
+  width: 80px;
+}
+.group-multi-switch .sweep-button-item-active {
+  background: #fe3176;
+}
+
+```
+
+## Resposive
+
+```
+@media screen and (max-width: 768px) {
+  .resposive {
+    flex-direction: column;
+  }
+  .resposive .sweep-button-item {
+    width: 100%;
+  }
+}
+```
+
+<div
+  style={{
+    borderRadius: "100%",
+    position: "fixed",
+    right: 20,
+    bottom: 20,
+    cursor: "pointer",
+    display: "block",
+    padding: 10,
+    zIndex: 1000000,
+    color: "white",
+    background: "#fe3176",
+  }}
+  onClick={() => window.scrollTo(0, 270)}
+>
+  list
+</div>

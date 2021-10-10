@@ -1,0 +1,253 @@
+<!--- Introduction.stories.stories.mdx -->
+
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+
+<Meta title="Document/switch-multi-button" />
+
+# Document
+
+<br />
+
+<p style={{ fontSize: 18 }}>
+  In this part we explain how to use this package props to customize your
+  component.
+</p>
+
+<br />
+<br />
+<br />
+<br />
+
+## List
+
+- [**className**](#classname)
+- [**style**](#style)
+- [**transition**](#transition)
+- [**direction**](#direction)
+- [**options**](#options)
+- [**value**](#value-setvalue)
+- [**setValue**](#value-setvalue)
+- [**buttons**](#buttons)
+- [**Css**](#css)
+
+## className
+
+<p style={{ fontSize: 18 }}>className is for root element</p>
+
+`className='some-classes'`
+
+<br />
+<br />
+
+## style
+
+<p style={{ fontSize: 18 }}> style is for root element</p>
+
+`style={{ fontSize: 18, fontWeight: 20, ... }}`
+
+<br />
+<br />
+
+## transition
+
+<p style={{ fontSize: 18 }}>
+  Set a number value to transition props. Its used for sweep button motion
+  movement.
+</p>
+
+`transition={.4}`
+
+<br />
+<br />
+
+## direction
+
+<p style={{ fontSize: 18 }}>
+  This props is used for different directions to any ltr and rtl languages.
+  <br /> It can be used for english, arabic, persion, turkish, ... etc.
+</p>
+
+`direction='ltr'`
+`direction='rtl'`
+
+<br />
+<br />
+
+## options
+
+<p style={{ fontSize: 18 }}>
+  This props is a object to be used for extra customization. <br />
+  The options has two property as <strong>toggleContext</strong> and <strong>
+    removeCss
+  </strong>. <br /> <br />
+  If you set toggleContext value except <i>nulish data</i> (undefined and null)
+  , it set for sweep button text. <br /> This feature usually is used for some
+  component like a toggle component. <br /> <br />
+  The removeCss default value is false but if you set true value, it removes all
+  css package and you can set your custom styles with className
+</p>
+
+`options= {{ toggleContext: undefined }}`
+
+<br />
+<br />
+
+## value-setValue
+
+<p style={{ fontSize: 18 }}>
+  The value props is used to set default button and after every click, it is
+  changed by buttons value. <br />
+  And setValue props get a setState function to update your state after clicking
+  on deactive button.
+</p>
+
+```jsx
+import { useState } from "react";
+import { SwitchMultiButton } from "switch-multi-button";
+
+function Component() {
+  const [state, setState] = useState("first");
+
+  return (
+    <SwitchMultiButton
+      value={state}
+      setValue={setState}
+      buttons={[
+        {
+          text: "First btn",
+          value: "first",
+        },
+        {
+          text: "Second btn",
+          value: "second",
+        },
+      ]}
+    />
+  );
+}
+```
+
+<br />
+<br />
+
+## buttons
+
+<p style={{ fontSize: 18 }}>
+  With buttons props we can create our buttons items. <br /> Simple useage is
+  just set <strong> text </strong> and <strong>value</strong> property. <br />
+  The <strong>value</strong> property is only required.
+</p>
+
+```
+buttons = {
+  // text => number, string, Component
+  text: 'first btn',
+
+  // => number, string
+  value: 'first',
+
+  // => button element type ('a', 'p', 'pre', 'section', ...)
+  Button: 'div',
+
+  // key => set your custom keys for handle list keys (package handle keys too).
+  key: '',
+
+  // className => root element className
+  className: '',
+
+  // activeItemClass => use for active item
+  activeItemClass: '',
+
+  // activeRootClass => can be customize root style
+  // when each item ativate (like a switch component to change background color)
+  activeRootClass: '',
+
+  // props => it set for Button item props
+  // you can set all of the elemet props with object property
+  props: {
+    onClick: () => {},
+    href: '', // for a tag
+    ...
+  },
+}
+
+```
+
+<br />
+<br />
+
+## Css
+
+<p style={{ fontSize: 18 }}>
+  Bottom styles are initial css for switch-multi-button package.
+  <br />
+</p>
+
+If you want to set spacing between buttons, use the **gap** property in switch-multi-button className.
+
+- root className: `switch-multi-button`
+- all button and active button className: `sweep-button-item`
+- sweep button(active) className: `sweep-button-item-active`
+
+```
+.switch-multi-button {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  position: relative;
+  margin: 0px;
+  padding: 3px;
+  box-sizing: border-box;
+  background: #c4dbff;
+  border-radius: 3px;
+  width: intrinsic;
+  width: -moz-max-content;
+  width: -webkit-max-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: intrinsic;
+  height: -moz-max-content;
+  height: -webkit-max-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.switch-multi-button .sweep-button-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 15px;
+  color: #0c277a;
+  border-radius: 3px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+.switch-multi-button .sweep-button-item-active {
+  position: absolute !important;
+  background: #063ee5;
+  color: white;
+  cursor: default;
+  box-sizing: border-box;
+}
+
+```
+
+<div
+  style={{
+    borderRadius: "100%",
+    position: "fixed",
+    right: 20,
+    bottom: 20,
+    cursor: "pointer",
+    display: "block",
+    padding: 10,
+    zIndex: 1000000,
+    color: "white",
+    background: "#fe3176 ",
+  }}
+  onClick={() => window.scrollTo(0, 250)}
+>
+  list
+</div>

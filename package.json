@@ -1,0 +1,66 @@
+{
+  "name": "switch-multi-button",
+  "version": "1.0.0",
+  "author": "mohammad barzegar",
+  "description": "this package has a toggle and multiple switch buttons",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mohammadbrzbrz72/switch-multi-button.git"
+  },
+  "homepage": "https://mohammadbrzbrz72.github.io/switch-multi-button/",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "source": "src/index.js",
+  "files": [
+    "dist"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "button",
+    "group-button",
+    "switch-button",
+    "toggle-button",
+    "toggle",
+    "switch",
+    "ui",
+    "react-component"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "build": "rollup -c",
+    "predeploy": "yarn run build-storybook",
+    "deploy": "gh-pages -d storybook-static"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/preset-react": "^7.14.5",
+    "@rollup/plugin-commonjs": "^21.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.5",
+    "@storybook/addon-actions": "^6.3.8",
+    "@storybook/addon-essentials": "^6.3.8",
+    "@storybook/addon-links": "^6.3.8",
+    "@storybook/react": "^6.3.8",
+    "babel-loader": "^8.2.2",
+    "gh-pages": "^3.2.3",
+    "postcss": "^8.3.8",
+    "postcss-loader": "^6.1.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "rollup": "^2.57.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.1",
+    "rollup-plugin-terser": "^7.0.2"
+  },
+  "peerDependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  }
+}

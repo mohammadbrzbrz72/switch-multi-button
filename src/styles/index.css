@@ -1,0 +1,41 @@
+.switch-multi-button {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  position: relative;
+  margin: 0px;
+  padding: 3px;
+  box-sizing: border-box;
+  background: #c4dbff;
+  border-radius: 3px;
+  width: intrinsic;
+  width: -moz-max-content;
+  width: -webkit-max-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: intrinsic;
+  height: -moz-max-content;
+  height: -webkit-max-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.switch-multi-button .sweep-button-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 15px;
+  color: #0c277a;
+  border-radius: 3px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+.switch-multi-button .sweep-button-item-active {
+  position: absolute !important;
+  background: #063ee5;
+  color: white;
+  cursor: default;
+  box-sizing: border-box;
+}

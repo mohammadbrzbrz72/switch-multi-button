@@ -1,0 +1,28 @@
+.circle-toggle {
+  width: 70px;
+  height: 35px;
+  justify-content: space-between;
+  border-radius: 30px;
+}
+.circle-toggle .sweep-button-item {
+  border-radius: 100%;
+  font-size: 12px;
+  min-height: 30px !important;
+  min-width: 30px !important;
+  max-width: 30px !important;
+  max-height: 30px !important;
+}
+.root-toggle-on {
+  transition: 0.4s;
+  background-color: #96de7f;
+}
+.root-toggle-off {
+  transition: 0.4s;
+  background-color: #7760c8;
+}
+.item-toggle-on {
+  background-color: #33701f !important;
+}
+.item-toggle-off {
+  background-color: #20173d !important;
+}

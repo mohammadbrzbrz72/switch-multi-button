@@ -1,0 +1,12 @@
+.group-multi-switch {
+  width: 253px;
+  flex-wrap: wrap;
+  background: #f9b0a7;
+}
+.group-multi-switch .sweep-button-item {
+  background: #f8e5ba;
+  width: 80px;
+}
+.group-multi-switch .sweep-button-item-active {
+  background: #fe3176;
+}
