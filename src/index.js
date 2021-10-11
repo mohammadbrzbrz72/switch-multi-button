@@ -12,7 +12,7 @@ import {
   findButtonActiveIndex,
 } from "./utils/index.js";
 import "./styles/index.css";
-import { options } from "./constants/index.js";
+import { OPTIONS } from "./constants/index.js";
 
 export function SwitchMultiButton({
   className,
@@ -24,6 +24,7 @@ export function SwitchMultiButton({
   direction,
   options,
 }) {
+  options = Object.assign({}, OPTIONS, options);
   const rootRef = React.useRef();
   const [isFirstMounting, setIsFirstMounting] = React.useState(false);
   const windowResize = useWindowResize();
@@ -64,7 +65,10 @@ export function SwitchMultiButton({
         className,
         buttons[activeIndex].activeRootClass,
       )}
-      style={Object.assign({}, style, { direction })}
+      style={Object.assign({}, style, {
+        direction,
+        userSelect: options.userSelect,
+      })}
     >
       <StaticButtonList buttons={buttons} handleBtnClick={handleBtnClick} />
       <FloatingButtonsWrapper
@@ -84,7 +88,7 @@ SwitchMultiButton.defaultProps = {
   style: {},
   transition: 0.4,
   direction: "ltr",
-  options: options,
+  options: OPTIONS,
   buttons: [],
 };
 
@@ -99,6 +103,8 @@ SwitchMultiButton.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   /**
    * set your setState callback
+   * and
+   * you can change active button with setState by value
    */
   setValue: PropTypes.func.isRequired,
   /**
@@ -128,6 +134,7 @@ SwitchMultiButton.propTypes = {
    * {
    *  toggleContext: undefined,
    *  removeCss: false,
+   *  userSelect: 'none'
    * }
    * see document for more info
    */

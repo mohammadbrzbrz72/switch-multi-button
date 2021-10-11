@@ -1,4 +1,5 @@
-export const options = {
+export const OPTIONS = {
   toggleContext: undefined,
   removeCss: false,
+  userSelect: "none",
 };

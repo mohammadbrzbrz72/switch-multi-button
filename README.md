@@ -24,12 +24,33 @@ The switch-multi-button is a react package to create a component to switch to mu
 <br />
 <br />
 
+## Installation
+
+<br />
+
+**npm:** <br />
+&nbsp;&nbsp;&nbsp;&nbsp;`npm install --save switch-multi-button`
+
+**yarn:** <br />
+&nbsp;&nbsp;&nbsp;&nbsp;`yarn add switch-multi-button`
+
+<br />
+<br />
+
 ## Links:
 
-To see complete exmaples and document, refer to homepage at bottom link <br />
+### To see complete exmaples and document, refer to homepage at bottom link <br />
+
 &nbsp;&nbsp;&nbsp;&nbsp;[Homepage site(document, examples,...)](https://mohammadbrzbrz72.github.io/switch-multi-button/) <br />
+
+<br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Npm link](https://www.npmjs.com/package/switch-multi-button) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[Github link](https://github.com/mohammadbrzbrz72/switch-multi-button)
+
+<br />
+<br />
+<br />
+<br />
 
 ## Example
 
