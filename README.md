@@ -17,8 +17,8 @@ The switch-multi-button is a react package to create a component to switch to mu
 
 ### Package size:
 
-&nbsp;&nbsp;&nbsp;&nbsp;package size:&nbsp;&nbsp;&nbsp;&nbsp; `4.4KB `<br />
-&nbsp;&nbsp;&nbsp;&nbsp;gzipped size:&nbsp;&nbsp;&nbsp;&nbsp; `1.9KB`
+&nbsp;&nbsp;&nbsp;&nbsp;package size:&nbsp;&nbsp;&nbsp;&nbsp; `4.9KB `<br />
+&nbsp;&nbsp;&nbsp;&nbsp;gzipped size:&nbsp;&nbsp;&nbsp;&nbsp; `2.1KB`
 
 <br />
 <br />
@@ -124,7 +124,7 @@ function Example = () => {
 <br />
 
 <h4>
-  Custom active button change by index or value
+  change custom active button by index or value
 </h4>
 <br />
 
