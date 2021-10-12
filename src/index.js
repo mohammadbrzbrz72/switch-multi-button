@@ -17,22 +17,25 @@ import { OPTIONS } from "./constants/index.js";
 export function SwitchMultiButton({
   className,
   style,
+  buttons,
   value,
   setValue,
-  buttons,
+  changeTo,
   transition,
   direction,
   options,
 }) {
   options = Object.assign({}, OPTIONS, options);
   const rootRef = React.useRef();
+  const activeData = React.useRef({
+    value,
+    index: findButtonActiveIndex(buttons, value),
+  });
+
   const [isFirstMounting, setIsFirstMounting] = React.useState(false);
   const windowResize = useWindowResize();
   const [timeState, setTimeState] = useSetTimeout(Number(transition) * 1000);
   const [btnPosition, setBtnPosition] = React.useState({});
-  const [activeIndex, setActiveIndex] = React.useState(
-    findButtonActiveIndex(buttons, value),
-  );
 
   const setDefaultButton = () => {
     const childrens = [...rootRef.current.children];
@@ -41,18 +44,49 @@ export function SwitchMultiButton({
     setActiveButtonLocation(childrens[defaultButtonIndex], setBtnPosition);
   };
 
+  const handleChangeTo = (type, data) => {
+    const isValue = type === "value";
+    const buttonIndex = isValue ? findButtonActiveIndex(buttons, data) : data;
+    const buttonValue = isValue ? data : buttons[data].value;
+
+    if (
+      !(
+        buttonIndex === activeData.current.index ||
+        buttonValue === activeData.current.value
+      )
+    ) {
+      const childrens = [...rootRef.current.children];
+      setTimeState();
+      setActiveButtonLocation(childrens[buttonIndex], setBtnPosition);
+      activeData.current.index = buttonIndex;
+      setValue(buttonValue);
+    }
+  };
+
   const handleBtnClick = (onClick, index, buttonValue) => {
     return e => {
       if (onClick) onClick(e);
       setTimeState();
       setActiveButtonLocation(e.currentTarget, setBtnPosition);
-      setActiveIndex(index);
+      activeData.current.index = index;
       setValue(buttonValue);
     };
   };
 
   React.useEffect(() => {
-    if (!isFirstMounting) setIsFirstMounting(true);
+    if (changeTo) activeData.current.value = value;
+  }, [value]);
+
+  React.useEffect(() => {
+    if (!isFirstMounting) {
+      setIsFirstMounting(true);
+
+      if (changeTo) {
+        changeTo.current = {};
+        changeTo.current.byValue = handleChangeTo.bind(null, "value");
+        changeTo.current.byIndex = handleChangeTo.bind(null, "index");
+      }
+    }
 
     setDefaultButton();
   }, [windowResize]);
@@ -63,7 +97,7 @@ export function SwitchMultiButton({
       className={clsx(
         !options.removeCss && "switch-multi-button",
         className,
-        buttons[activeIndex].activeRootClass,
+        buttons[activeData.current.index].activeRootClass,
       )}
       style={Object.assign({}, style, {
         direction,
@@ -75,7 +109,7 @@ export function SwitchMultiButton({
         isFirstMounting={isFirstMounting}
         timeState={timeState}
         buttons={buttons}
-        activeIndex={activeIndex}
+        activeIndex={activeData.current.index}
         transition={transition}
         btnPosition={btnPosition}
         options={options}
@@ -103,10 +137,16 @@ SwitchMultiButton.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   /**
    * set your setState callback
-   * and
-   * you can change active button with setState by value
    */
   setValue: PropTypes.func.isRequired,
+  /**
+   * you can change active button by sending ref as props
+   * and changing active button with value or index.
+   * usage:
+   * changeTo.current.byValue('some-value');
+   * changeTo.current.byIndex(2);
+   */
+  changeTo: PropTypes.object,
   /**
    * each object in array creates a button for you,
    * {

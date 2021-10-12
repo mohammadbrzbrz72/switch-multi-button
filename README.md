@@ -123,6 +123,61 @@ function Example = () => {
 <br />
 <br />
 
+<h4>
+  Custom active button change by index or value
+</h4>
+<br />
+
+```jsx
+import { useState, useRef } from "react";
+import { SwitchMultiButton } from "switch-multi-button";
+
+function Component() {
+  const [state, setState] = useState("one");
+  const changeTo = useRef();
+
+  return (
+    <div>
+      <SwitchMultiButton
+        value={state}
+        setValue={setState}
+        changeTo={changeTo}
+        buttons={[
+          {
+            text: "first button",
+            value: "one",
+          },
+          {
+            text: "second button",
+            value: "two",
+          },
+        ]}
+      />
+
+      <button
+        onClick={() => {
+          changeTo.current.byValue("one");
+        }}
+      >
+        Change active button by value
+      </button>
+
+      <button
+        onClick={() => {
+          changeTo.current.byIndex(2);
+        }}
+      >
+        Change active button by index
+      </button>
+    </div>
+  );
+}
+```
+
+<br />
+<br />
+<br />
+
 <strong style="padding-right: 15px"> Document: </strong> [website (For more information)](https://mohammadbrzbrz72.github.io/switch-multi-button/?path=/story/document-switch-multi-button--page)
 
 <br />
@@ -142,10 +197,17 @@ SwitchMultiButton.propTypes = {
 
   /**
    * set your setState callback
-   * and
-   * you can change active button with setState by value
    */
   setValue: PropTypes.func.isRequired,
+
+  /**
+   * you can change active button by sending ref as props
+   * and changing active button with value or index.
+   * usage:
+   * changeTo.current.byValue('some-value');
+   * changeTo.current.byIndex(2);
+   */
+  changeTo: PropTypes.object,
 
   /**
    * each object in array creates a button for you,

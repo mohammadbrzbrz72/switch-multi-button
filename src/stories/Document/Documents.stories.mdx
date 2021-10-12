@@ -27,6 +27,7 @@ import { Meta, Story, Canvas } from "@storybook/addon-docs";
 - [**options**](#options)
 - [**value**](#value-setvalue)
 - [**setValue**](#value-setvalue)
+- [**changeTo**](#changeto)
 - [**buttons**](#buttons)
 - [**Css**](#css)
 
@@ -130,6 +131,64 @@ function Component() {
         },
       ]}
     />
+  );
+}
+```
+
+<br />
+<br />
+
+## changeTo
+
+<p style={{ fontSize: 18 }}>
+  With the changeTo props, you can change the active button by calling the{" "}
+  <strong> byValue </strong> or <strong> byIndex </strong> methods.
+</p>
+
+<p style={{ fontSize: 18 }}>Bottom code show you how to use changeTo props:</p>
+
+```jsx
+import { useState, useRef } from "react";
+import { SwitchMultiButton } from "switch-multi-button";
+
+function Component() {
+  const [state, setState] = useState("one");
+  const changeTo = useRef();
+
+  return (
+    <div>
+      <SwitchMultiButton
+        value={state}
+        setValue={setState}
+        changeTo={changeTo}
+        buttons={[
+          {
+            text: "first button",
+            value: "one",
+          },
+          {
+            text: "second button",
+            value: "two",
+          },
+        ]}
+      />
+
+      <button
+        onClick={() => {
+          changeTo.current.byValue("one");
+        }}
+      >
+        Change active button by value
+      </button>
+
+      <button
+        onClick={() => {
+          changeTo.current.byIndex(2);
+        }}
+      >
+        Change active button by index
+      </button>
+    </div>
   );
 }
 ```
